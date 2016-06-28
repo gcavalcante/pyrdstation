@@ -78,6 +78,8 @@ setup(
         'test': Tox
     },
     install_requires=[
+        'requests==2.10.0',
+        'wsgiref==0.1.2'
     ],
     license='Apache License (2.0)',
     name='pyrdstation',
