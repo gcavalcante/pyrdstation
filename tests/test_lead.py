@@ -115,20 +115,7 @@ class TestLead(TestCase):
         self.assertEqual(dict_after['tags'], "#tag_test")
 
     def test_to_rdstation_json(self):
-        expected_json = '{"website": "www.test.com", ' \
-                        '"cargo": "Test Job", ' \
-                        '"empresa": "Test Company", ' \
-                        '"token_rdstation": "token", ' \
-                        '"c_utmz": "google tag", ' \
-                        '"twitter": "@testcompany", ' \
-                        '"nome": "Test Name", ' \
-                        '"identificador": "1234567890", ' \
-                        '"numero-de-funcionarios": "100", ' \
-                        '"endereco-empresa": "3321 Test Ave. Boston, MA", ' \
-                        '"celular": "+1 702 555-5544", ' \
-                        '"telefone": "+1 702 555-5555", ' \
-                        '"email": "test@test.com", ' \
-                        '"tags": "#tag_test"}'
+        expected_json = '{"c_utmz": "google tag", "cargo": "Test Job", "celular": "+1 702 555-5544", "email": "test@test.com", "empresa": "Test Company", "endereco-empresa": "3321 Test Ave. Boston, MA", "identificador": "1234567890", "nome": "Test Name", "numero-de-funcionarios": "100", "tags": "#tag_test", "telefone": "+1 702 555-5555", "token_rdstation": "token", "twitter": "@testcompany", "website": "www.test.com"}'
         self.obj.name = "Test Name"
         self.obj.job_position = "Test Job"
         self.obj.company = "Test Company"

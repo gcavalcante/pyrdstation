@@ -175,7 +175,7 @@ class Lead(object):
             if 'numero-de-funcionarios' in dict_value.keys() and isinstance(self._employee_qty, int):
                 dict_value['numero-de-funcionarios'] = str(self._employee_qty)
 
-            return json.dumps(dict_value)
+            return json.dumps(dict_value, sort_keys=True)
         else:
             raise ValueError('token_rdstation was not provided')
 
