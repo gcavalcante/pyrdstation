@@ -1,7 +1,6 @@
 language: python
 env:
   - TOXENV=py27
-  - TOXENV=lint
 install:
   - pip install -r requirements-dev.txt
 matrix:
