@@ -1,0 +1,10 @@
+{
+  "generator-python-lib": {
+    "projectName": "pyrdstation",
+    "fullName": "Giovani Zamboni",
+    "email": "zamboni@jetbov.com",
+    "githubName": "JetBov",
+    "ciProvider": "Travis CI",
+    "version": "1.7.0"
+  }
+}
