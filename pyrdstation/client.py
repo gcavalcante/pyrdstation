@@ -120,7 +120,6 @@ class Lead(object):
     @traffic_source.setter
     def traffic_source(self, value):
         self._traffic_source = value
-
     
     def __init__(self, email=None, conversion_id=None, name=None, job_position=None, company=None, employee_qty=None,
                  company_address=None, phone=None, mobile=None, website=None, twitter=None, c_utmz=None, tags=None,
@@ -218,7 +217,7 @@ class RDClient(object):
         if private_token is not None:
             self._private_token = private_token
 
-    def track_conversion(self, lead=None):
+    def track_conversion(self, lead=None, traffic_source=None):
         """
         track a conversion on RDStation
         :param lead: Lead
@@ -234,6 +233,9 @@ class RDClient(object):
             "Content-type": "application/json"
         }
 
+        if traffic_source is not None:
+            lead.traffic_source = traffic_source
+
         try:
             request = requests.post(self._rdstation_url, headers=headers, data=json_to_post)
         except requests.ConnectionError as e:
@@ -242,3 +244,4 @@ class RDClient(object):
         if request.status_code != requests.codes.ok:
             raise StandardError("Error on track conversion. return: %s" % request.reason)
 
+        return request.json()
