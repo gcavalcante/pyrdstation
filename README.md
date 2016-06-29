@@ -37,7 +37,7 @@ pip install -e git+https://github.com/JetBov/pyrdstation.git#egg=pyrdstation
       print e.message
 ```
 
-For more information, check [Resultados Digitais Conversion API documentation](ajuda.rdstation.com.br/hc/pt-br/sections/200626689-Integrações-com-Sistema-Próprio-via-API-).
+For more information, check [Resultados Digitais Conversion API documentation](http://ajuda.rdstation.com.br/hc/pt-br/sections/200626689-Integrações-com-Sistema-Próprio-via-API-).
 
 ## Contributing
 
