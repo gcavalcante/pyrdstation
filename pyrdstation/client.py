@@ -112,9 +112,19 @@ class Lead(object):
     @tags.setter
     def tags(self, value):
         self._tags = value
+
+    @property
+    def traffic_source(self):
+        return self._traffic_source
+
+    @traffic_source.setter
+    def traffic_source(self, value):
+        self._traffic_source = value
+
     
     def __init__(self, email=None, conversion_id=None, name=None, job_position=None, company=None, employee_qty=None,
-                 company_address=None, phone=None, mobile=None, website=None, twitter=None, c_utmz=None, tags=None):
+                 company_address=None, phone=None, mobile=None, website=None, twitter=None, c_utmz=None, tags=None,
+                 traffic_source=None):
         if conversion_id is None:
             raise ValueError("conversion_id was not provided.")
         if email is None:
@@ -132,6 +142,7 @@ class Lead(object):
         self._twitter = twitter
         self._c_utmz = c_utmz
         self._tags = tags
+        self._traffic_source = traffic_source
 
     def to_dict(self):
         if self._conversion_id is None:
@@ -165,6 +176,8 @@ class Lead(object):
             dict_value.update({"c_utmz": self._c_utmz})
         if self._tags is not None:
             dict_value.update({"tags": self._tags})
+        if self._traffic_source is not None:
+            dict_value.update({"traffic_source": self._traffic_sources})
         return dict_value
 
     def to_rdstation_json(self, token_rdstation=None):
