@@ -73,6 +73,11 @@ class TestLead(TestCase):
         self.assertEqual(self.obj.tags, self.obj._tags)
         self.assertEqual(self.obj.tags, "#tag_test")
 
+    def test_traffic_source(self):
+        self.obj.traffic_source = "test_traffic"
+        self.assertEqual(self.obj.traffic_source, self.obj._traffic_source)
+        self.assertEqual(self.obj.traffic_source, "test_traffic")
+
     def test_to_dict(self):
         self.obj.name = "Test Name"
         self.obj.job_position = "Test Job"
@@ -85,6 +90,7 @@ class TestLead(TestCase):
         self.obj.twitter = "@testcompany"
         self.obj.c_utmz = "google tag"
         self.obj.tags = "#tag_test"
+        self.obj.traffic_source = "test_traffic"
         dict_after = self.obj.to_dict()
         self.assertEqual('email' in dict_after.keys(), True)
         self.assertEqual('identificador' in dict_after.keys(), True)
@@ -99,6 +105,7 @@ class TestLead(TestCase):
         self.assertEqual('twitter' in dict_after.keys(), True)
         self.assertEqual('c_utmz' in dict_after.keys(), True)
         self.assertEqual('tags' in dict_after.keys(), True)
+        self.assertEqual('traffic_source' in dict_after.keys(), True)
 
         self.assertEqual(dict_after['email'], "test@test.com")
         self.assertEqual(dict_after['identificador'], "1234567890")
@@ -113,9 +120,10 @@ class TestLead(TestCase):
         self.assertEqual(dict_after['twitter'], "@testcompany")
         self.assertEqual(dict_after['c_utmz'], "google tag")
         self.assertEqual(dict_after['tags'], "#tag_test")
+        self.assertEqual(dict_after['traffic_source'], "test_traffic")
 
     def test_to_rdstation_json(self):
-        expected_json = '{"c_utmz": "google tag", "cargo": "Test Job", "celular": "+1 702 555-5544", "email": "test@test.com", "empresa": "Test Company", "endereco-empresa": "3321 Test Ave. Boston, MA", "identificador": "1234567890", "nome": "Test Name", "numero-de-funcionarios": "100", "tags": "#tag_test", "telefone": "+1 702 555-5555", "token_rdstation": "token", "twitter": "@testcompany", "website": "www.test.com"}'
+        expected_json = '{"c_utmz": "google tag", "cargo": "Test Job", "celular": "+1 702 555-5544", "email": "test@test.com", "empresa": "Test Company", "endereco-empresa": "3321 Test Ave. Boston, MA", "identificador": "1234567890", "nome": "Test Name", "numero-de-funcionarios": "100", "tags": "#tag_test", "telefone": "+1 702 555-5555", "token_rdstation": "token", "traffic_source": "test_traffic", "twitter": "@testcompany", "website": "www.test.com"}'
         self.obj.name = "Test Name"
         self.obj.job_position = "Test Job"
         self.obj.company = "Test Company"
@@ -127,4 +135,5 @@ class TestLead(TestCase):
         self.obj.twitter = "@testcompany"
         self.obj.c_utmz = "google tag"
         self.obj.tags = "#tag_test"
+        self.obj.traffic_source = "test_traffic"
         self.assertEqual(self.obj.to_rdstation_json('token'), expected_json)

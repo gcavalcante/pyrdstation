@@ -177,7 +177,7 @@ class Lead(object):
         if self._tags is not None:
             dict_value.update({"tags": self._tags})
         if self._traffic_source is not None:
-            dict_value.update({"traffic_source": self._traffic_sources})
+            dict_value.update({"traffic_source": self._traffic_source})
         return dict_value
 
     def to_rdstation_json(self, token_rdstation=None):
